@@ -2,23 +2,27 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/nav_graph.xml"
-    app:startDestination="@id/nav_fragmentDetailMovie">
+    app:startDestination="@id/nav_fragmentComics">
 
     <fragment
-        android:id="@+id/nav_fragmentMovies"
+        android:id="@+id/nav_fragmentComics"
         android:name="com.example.marvelcomics.view.comic_list.ComicListFragment"
         android:label="@string/comic_list_fragment">
 
         <action
-            android:id="@+id/nav_moviesToDetail"
-            app:destination="@id/nav_fragmentDetailMovie" />
+            android:id="@+id/action_listFragment_to_detailFragment"
+            app:destination="@id/nav_fragmentDetailComic" />
+
     </fragment>
 
     <fragment
-        android:id="@+id/nav_fragmentDetailMovie"
+        android:id="@+id/nav_fragmentDetailComic"
         android:name="com.example.marvelcomics.view.comic_detail.ComicDetailFragment"
         android:label="@string/comic_detail_fragment">
 
+        <argument
+            android:name="comicId"
+            app:argType="long" />
     </fragment>
 
 </navigation>

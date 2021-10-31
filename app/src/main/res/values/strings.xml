@@ -14,4 +14,8 @@
     <string name="negative_button_error">Cerrar</string>
     <string name="price_tittle">Prices</string>
     <string name="creators_tittle">Creators</string>
+
+
+    <string name="comic_list_mvc_transition_name">email_card_%1$s</string>
+    <string name="comic_detail_mcv_transition_name">email_card_detail</string>
 </resources>

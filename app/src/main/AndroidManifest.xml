@@ -14,7 +14,7 @@
         android:usesCleartextTraffic="true"
         android:supportsRtl="true"
         android:theme="@style/Theme.MarvelComics"
-        android:fullBackupContent="">
+        android:fullBackupContent="true">
         <activity
             android:name=".MainActivity"
             android:exported="true">

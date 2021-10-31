@@ -1,6 +1,7 @@
 package com.example.marvelcomics.view.comic_list.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.marvelcomics.IBindingRecyclerAdapter
@@ -9,9 +10,13 @@ import com.example.marvelcomics.getItemImageComic
 import com.example.marvelcomics.retrofit.response.ComicDetail
 import com.example.marvelcomics.view.comic_list.ComicListViewModel
 
-class ComicsListAdapter(viewModel: ComicListViewModel) :
+class ComicsListAdapter(private val listener: ComicAdapterListener) :
     RecyclerView.Adapter<ComicsListAdapter.ComicViewHolder>(),
     IBindingRecyclerAdapter<ArrayList<ComicDetail>> {
+
+    interface ComicAdapterListener {
+        fun onComicClicked(view: View, comicDetail: ComicDetail)
+    }
 
     var comicsList = ArrayList<ComicDetail>()
 
@@ -29,6 +34,7 @@ class ComicsListAdapter(viewModel: ComicListViewModel) :
 
     override fun onBindViewHolder(holder: ComicViewHolder, position: Int) {
         with(holder.binding) {
+            listenerLayout = listener
             comicDetail = comicsList[position]
             urlImage = getItemImageComic(comicsList[position].thumbnail)
         }
