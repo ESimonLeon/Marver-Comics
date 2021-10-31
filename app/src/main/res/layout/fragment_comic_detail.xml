@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModelLayout"
+            type="com.example.marvelcomics.view.comic_detail.ComicDetailViewModel" />
+
+        <variable
+            name="urlImage"
+            type="String" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/dp_10">
+
+        <ImageView
+            android:id="@+id/ivComic"
+            imageUri="@{ urlImage }"
+            android:layout_width="168dp"
+            android:layout_height="252dp"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:contentDescription="@string/image_comic"
+            android:scaleType="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/tvDigitalComic"
+            textDigital="@{ viewModelLayout.comicsListResponse.data.results[0].digitalId }"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_10"
+            android:textColor="?attr/colorOnPrimary"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivComic" />
+
+        <TextView
+            android:id="@+id/tvFormatComic"
+            textFormat="@{ viewModelLayout.comicsListResponse.data.results[0].format }"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_10"
+            android:textColor="?attr/colorOnPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivComic"
+            app:layout_constraintTop_toBottomOf="@+id/tvDigitalComic" />
+
+        <TextView
+            android:id="@+id/tvPageCountComic"
+            textPageCount="@{ viewModelLayout.comicsListResponse.data.results[0].pageCount }"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_10"
+            android:textColor="?attr/colorOnPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivComic"
+            app:layout_constraintTop_toBottomOf="@+id/tvFormatComic" />
+
+        <LinearLayout
+            android:id="@+id/llPricesComic"
+            llPrices="@{ viewModelLayout.comicsListResponse.data.results[0].prices }"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_10"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivComic"
+            app:layout_constraintTop_toBottomOf="@+id/tvPageCountComic">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/price_tittle"
+                android:textColor="?attr/colorOnPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ivComic"
+                app:layout_constraintTop_toBottomOf="@+id/tvFormatComic" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvDescriptionComic"
+            textDescription="@{ viewModelLayout.comicsListResponse.data.results[0].description }"
+            android:layout_width="match_parent"
+            android:textSize="15sp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_10"
+            android:textColor="?attr/colorOnPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ivComic" />
+
+        <LinearLayout
+            android:id="@+id/llCreatorsComic"
+            llCreators="@{ viewModelLayout.comicsListResponse.data.results[0].creators }"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvDescriptionComic">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/creators_tittle"
+                android:textColor="?attr/colorOnPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ivComic"
+                app:layout_constraintTop_toBottomOf="@+id/tvFormatComic" />
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
