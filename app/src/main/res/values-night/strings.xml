@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="comic_list_fragment">Lista de comics</string>
+    <string name="comic_detail_fragment">Detalle comic</string>
+    <string name="search_comic">Buscar comics</string>
+</resources>

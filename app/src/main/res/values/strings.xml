@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">MarvelComics</string>
+    <string name="comic_list_fragment">Lista de comics</string>
+    <string name="comic_detail_fragment">Detalle comic</string>
+    <string name="search_comic">Buscar comics</string>
+    <string name="image_comic">image_comic</string>
+    <string name="yes"> Yes</string>
+    <string name="no"> No</string>
+    <string name="detail_digital">Digital available: </string>
+    <string name="detail_not_description">No hay descripcion de este comic</string>
+    <string name="detail_format">Format: <b>%s</b></string>
+    <string name="title_error">Error</string>
+    <string name="description_error">Ocurrio un error en la comunicación</string>
+    <string name="negative_button_error">Cerrar</string>
+    <string name="price_tittle">Prices</string>
+    <string name="creators_tittle">Creators</string>
+</resources>
