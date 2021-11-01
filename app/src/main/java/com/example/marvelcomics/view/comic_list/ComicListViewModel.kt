@@ -49,7 +49,6 @@ class ComicListViewModel @Inject constructor(private val apiRepository: ApiRepos
         _communicationResult.apply {
             postValue(repository.isSuccessful)
             if (repository.isSuccessful) {
-                _updateLoadComics.postValue(false)
                 _comicsListResponse.postValue(repository.body())
             }
         }
