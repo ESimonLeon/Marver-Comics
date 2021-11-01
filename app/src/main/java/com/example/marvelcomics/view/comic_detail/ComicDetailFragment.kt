@@ -6,18 +6,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.marvelcomics.R
 import com.example.marvelcomics.databinding.FragmentComicDetailBinding
 import com.example.marvelcomics.getDetailImageComic
+import com.example.marvelcomics.view.BaseFragment
 import com.google.android.material.transition.MaterialContainerTransform
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class ComicDetailFragment : Fragment() {
+class ComicDetailFragment : BaseFragment() {
 
     private val args: ComicDetailFragmentArgs by navArgs()
 
@@ -34,7 +33,6 @@ class ComicDetailFragment : Fragment() {
             duration = 300
             scrimColor = Color.TRANSPARENT
         }
-
     }
 
     override fun onCreateView(
@@ -63,7 +61,10 @@ class ComicDetailFragment : Fragment() {
                 binding.urlImage = getDetailImageComic(it.data.results[0].thumbnail)
             }
         })
-    }
 
+        communicationResult.observe(requireActivity(), {
+            if (it == false) showCommunicationError()
+        })
+    }
 
 }

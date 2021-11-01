@@ -19,6 +19,9 @@ class ComicDetailViewModel @Inject constructor(private val apiRepository: ApiRep
     private val _comicsListResponse = MutableLiveData<ComicListResponse>()
     val comicsListResponse: LiveData<ComicListResponse> get() = _comicsListResponse
 
+    private val _communicationResult = MutableLiveData<Boolean>()
+    val communicationResult: LiveData<Boolean> get() = _communicationResult
+
     fun getDetailComic(idComic: Int) = viewModelScope.launch {
         val repository = withContext(IO) {
             apiRepository.getDetailComic(idComic)
@@ -26,11 +29,12 @@ class ComicDetailViewModel @Inject constructor(private val apiRepository: ApiRep
         createResult(repository)
     }
 
-    private fun createResult(repository: Response<ComicListResponse>) {
-        if (repository.isSuccessful) {
-            _comicsListResponse.postValue(repository.body())
+    private fun createResult(repository: Response<ComicListResponse>) =
+        _communicationResult.apply {
+            postValue(repository.isSuccessful)
+            if (repository.isSuccessful) {
+                _comicsListResponse.postValue(repository.body())
+            }
         }
-    }
-
 
 }
