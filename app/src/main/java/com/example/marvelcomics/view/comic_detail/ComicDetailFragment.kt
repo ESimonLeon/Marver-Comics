@@ -1,23 +1,19 @@
 package com.example.marvelcomics.view.comic_detail
 
 import android.app.usage.UsageEvents.Event.NONE
-import android.content.Context
 import android.graphics.Color
 import android.os.Bundle
-import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.ViewCompat
-import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.marvelcomics.R
 import com.example.marvelcomics.databinding.FragmentComicDetailBinding
 import com.example.marvelcomics.getDetailImageComic
 import com.google.android.material.transition.MaterialContainerTransform
-import com.google.android.material.transition.MaterialSharedAxis
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -58,6 +54,10 @@ class ComicDetailFragment : Fragment() {
 
         applyObservers()
         viewModel.getDetailComic(comicId.toInt())
+
+        binding.tvTitleComic.setOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 
     private fun applyObservers() = viewModel.apply {

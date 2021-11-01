@@ -42,7 +42,7 @@ object ApiService {
         .client(okHttpClient)
         .build()
 
-     @Singleton
+    @Singleton
     @Provides
     fun provideApiService(retrofit: Retrofit): ApiServiceInterface =
         retrofit.create(ApiServiceInterface::class.java)
@@ -50,5 +50,5 @@ object ApiService {
     @Singleton
     @Provides
     fun providesRepository(apiServiceInterface: ApiServiceInterface) =
-        Repository(apiServiceInterface)
+        ApiRepository(apiServiceInterface)
 }

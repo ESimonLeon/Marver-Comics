@@ -3,7 +3,6 @@ package com.example.marvelcomics.view.comic_list
 import android.app.AlertDialog
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -15,7 +14,6 @@ import com.example.marvelcomics.R
 import com.example.marvelcomics.databinding.FragmentComicListBinding
 import com.example.marvelcomics.retrofit.response.ComicDetail
 import com.example.marvelcomics.view.comic_list.adapter.ComicsListAdapter
-import com.google.android.material.transition.MaterialElevationScale
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -74,10 +72,8 @@ class ComicListFragment : Fragment(), ComicsListAdapter.ComicAdapterListener {
     }
 
     override fun onComicClicked(view: View, comicDetail: ComicDetail) {
-
-        val extras = FragmentNavigatorExtras(
-            view to getString(R.string.comic_detail_mcv_transition_name)
-        )
+        val extras =
+            FragmentNavigatorExtras(view to getString(R.string.comic_detail_mcv_transition_name))
         val directions =
             ComicListFragmentDirections.actionListFragmentToDetailFragment(comicDetail.id.toLong())
         findNavController().navigate(directions, extras)

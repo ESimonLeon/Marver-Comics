@@ -1,18 +1,14 @@
 package com.example.marvelcomics
 
-import android.content.Context
-import android.util.Log.wtf
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.marvelcomics.retrofit.response.ComicCollection
 import com.example.marvelcomics.retrofit.response.ComicPrices
-import com.example.marvelcomics.retrofit.response.ComicThumbnail
 
 interface IBindingRecyclerAdapter<T> {
     fun setData(data: T?)

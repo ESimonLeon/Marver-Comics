@@ -8,7 +8,6 @@ import com.example.marvelcomics.IBindingRecyclerAdapter
 import com.example.marvelcomics.databinding.ItemComicBinding
 import com.example.marvelcomics.getItemImageComic
 import com.example.marvelcomics.retrofit.response.ComicDetail
-import com.example.marvelcomics.view.comic_list.ComicListViewModel
 
 class ComicsListAdapter(private val listener: ComicAdapterListener) :
     RecyclerView.Adapter<ComicsListAdapter.ComicViewHolder>(),

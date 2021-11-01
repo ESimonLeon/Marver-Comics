@@ -4,10 +4,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.marvelcomics.retrofit.Repository
+import com.example.marvelcomics.retrofit.ApiRepository
 import com.example.marvelcomics.retrofit.response.ComicListResponse
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -15,7 +14,7 @@ import retrofit2.Response
 import javax.inject.Inject
 
 @HiltViewModel
-class ComicListViewModel @Inject constructor(private val repository: Repository) : ViewModel() {
+class ComicListViewModel @Inject constructor(private val apiRepository: ApiRepository) : ViewModel() {
 
     private val _comicsListResponse = MutableLiveData<ComicListResponse>()
     val comicsListResponse: LiveData<ComicListResponse> get() = _comicsListResponse
@@ -40,12 +39,11 @@ class ComicListViewModel @Inject constructor(private val repository: Repository)
 
     fun loadComics() = viewModelScope.launch {
         val repository = withContext(IO) {
-            repository.getComics(limitComics.value)
+            apiRepository.getComics(limitComics.value)
         }
         _updateLoadComics.postValue(false)
         createResult(repository)
     }
-
 
     private fun createResult(repository: Response<ComicListResponse>) =
         _communicationResult.apply {
