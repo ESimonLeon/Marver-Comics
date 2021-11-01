@@ -53,11 +53,8 @@ class ComicDetailFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         applyObservers()
-        viewModel.getDetailComic(comicId.toInt())
 
-        binding.tvTitleComic.setOnClickListener {
-            findNavController().navigateUp()
-        }
+        viewModel.getDetailComic(comicId.toInt())
     }
 
     private fun applyObservers() = viewModel.apply {
